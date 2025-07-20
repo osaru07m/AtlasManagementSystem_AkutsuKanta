@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Authenticated\BulletinBoard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BulletinBoard\PostCommentFormRequest;
 use App\Models\Categories\MainCategory;
 use App\Models\Categories\SubCategory;
 use App\Models\Posts\Post;
@@ -74,7 +75,7 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
-    public function commentCreate(Request $request){
+    public function commentCreate(PostCommentFormRequest $request){
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
