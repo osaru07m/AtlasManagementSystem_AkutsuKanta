@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Authenticated\BulletinBoard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Categories\MainCategory;
 use App\Models\Categories\SubCategory;
 use App\Models\Posts\Post;
@@ -11,7 +10,8 @@ use App\Models\Posts\PostComment;
 use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
