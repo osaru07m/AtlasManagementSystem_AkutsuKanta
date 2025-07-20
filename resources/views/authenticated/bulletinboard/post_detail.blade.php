@@ -6,11 +6,20 @@
         <div class="detail_inner_head">
           <div>
           </div>
+          @if (Auth::id() === $post->user_id)
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
+            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してよろしいですか？')">削除</a>
           </div>
+          @endif
         </div>
+
+        @error('post_title')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
+        @error('post_body')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
 
         <div class="contributor d-flex">
           <p>
