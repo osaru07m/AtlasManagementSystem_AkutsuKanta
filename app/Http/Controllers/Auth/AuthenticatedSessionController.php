@@ -28,11 +28,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $userdata = $request -> only('mail_address', 'password');
-        if (Auth::attempt($userdata)) {
-            return redirect('top');
-        }else{
-            return redirect('login')->with('flash_message', 'name or password is incorrect');
+        try{
+            $userdata = $request -> only('mail_address', 'password');
+            if (Auth::attempt($userdata)) {
+                return redirect('top');
+            }else{
+                return redirect('login')->with('flash_message', 'name or password is incorrect');
+            }
+        }catch(\Exception $e){
+            return redirect('login')->with('flash_message', 'An error occurred');
         }
     }
 
