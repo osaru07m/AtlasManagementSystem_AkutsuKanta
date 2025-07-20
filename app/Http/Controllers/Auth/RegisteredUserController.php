@@ -3,16 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use DB;
-
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\Users\Subjects;
 use App\Models\Users\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -30,40 +25,39 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\Auth\RegisterRequest $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
         DB::beginTransaction();
-        try{
-            $old_year = $request->old_year;
-            $old_month = $request->old_month;
-            $old_day = $request->old_day;
-            $data = $old_year . '-' . $old_month . '-' . $old_day;
-            $birth_day = date('Y-m-d', strtotime($data));
-            $subjects = $request->subject;
 
-            $user_get = User::create([
-                'over_name' => $request->over_name,
-                'under_name' => $request->under_name,
-                'over_name_kana' => $request->over_name_kana,
-                'under_name_kana' => $request->under_name_kana,
-                'mail_address' => $request->mail_address,
-                'sex' => $request->sex,
-                'birth_day' => $birth_day,
-                'role' => $request->role,
-                'password' => bcrypt($request->password)
+        try{
+            $validated = $request->validated();
+
+            $birthDate = sprintf('%04d-%02d-%02d', $validated['old_year'], $validated['old_month'], $validated['old_day']);
+
+            $user = User::create([
+                'over_name'       => $validated['over_name'],
+                'under_name'      => $validated['under_name'],
+                'over_name_kana'  => $validated['over_name_kana'],
+                'under_name_kana' => $validated['under_name_kana'],
+                'mail_address'    => $validated['mail_address'],
+                'sex'             => $validated['sex'],
+                'birth_day'       => $birthDate,
+                'role'            => $validated['role'],
+                'password'        => Hash::make($validated['password']),
             ]);
-            if($request->role == 4){
-                $user = User::findOrFail($user_get->id);
-                $user->subjects()->attach($subjects);
+
+            if ($validated['role'] == 4) {
+                $user->subjects()->attach($validated['subject']);
             }
+
             DB::commit();
             return view('auth.login.login');
-        }catch(\Exception $e){
+        }catch (\Exception $e) {
             DB::rollback();
             return redirect()->route('loginView');
         }
