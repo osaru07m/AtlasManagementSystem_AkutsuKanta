@@ -35,6 +35,13 @@
       <ul>
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+        <ul class="sub_categories category_num{{ $category->id }}">
+          @foreach($category->subCategories as $sub_category)
+          <li class="sub_category" category_id="{{ $category->id }}" sub_category_id="{{ $sub_category->id }}">
+            <a href="{{ route('post.show', ['category_word' => $sub_category->sub_category]) }}">{{ $sub_category->sub_category }}</a>
+          </li>
+          @endforeach
+        </ul>
         @endforeach
       </ul>
     </div>
