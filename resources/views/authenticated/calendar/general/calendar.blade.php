@@ -21,7 +21,7 @@
             </div>
             <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
               <label>予約日時</label>
-              <input class="delete-modal-reserve-date" readonly></input>
+              <input name="delete_date" class="delete-modal-reserve-date" readonly></input>
               <label>予約部</label>
               <input class="delete-modal-reserve-part" readonly></input>
             </div>
