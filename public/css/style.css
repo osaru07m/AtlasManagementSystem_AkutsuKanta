@@ -40,19 +40,19 @@ li {
 
 /* スクール予約関連 */
 .day-blank {
-  background: #D3D3D3;
+  background: #D3D3D3 !important;
 }
 
 .day-sat {
-  color: #0000FF;
+  color: #0000FF !important;
 }
 
 .day-sun {
-  color: #FF0000;
+  color: #FF0000 !important;
 }
 
 .past-day {
-  background: #EEE;
+  background: #EEE !important;
 }
 
 .calendar-td {
@@ -253,39 +253,51 @@ li {
 
 /* ユーザー検索 */
 .reserve_users_area {
-  display: flex;
-  flex-wrap: wrap;
-  width: 800px;
-  margin: 10px auto;
-  height: 80vh;
-  overflow: scroll;
-  padding: 10px;
-  background: #FFF;
-  border-radius: 5px;
+  overflow-y: scroll;
 }
 
 .reserve_users_area span {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .one_person {
-  width: 250px;
+  background-color: #fff;
+  width: calc(100% / 4 - .5rem);
   height: 250px;
+  box-sizing: border-box;
+}
+
+.one_person > div > span:not(:first-child),
+.one_person > div > a > span{
+  font-weight: bold;
 }
 
 .search_conditions span {
   cursor: pointer;
 }
 
+.search_conditions i {
+  transition: all .3s ease-in-out;
+}
+.search_conditions i.active {
+  transform: rotate(180deg);
+}
+
 .search_conditions_inner {
   display: none;
-  background: #FFF;
 }
 
 .subject_edit_btn {
   font-size: 12px;
   color: #0000FF;
   cursor: pointer;
+}
+
+.toggle-icon {
+  transition: all .3s ease-in-out;
+}
+.toggle-icon.active {
+  transform: rotate(180deg);
 }
 
 .subject_inner {

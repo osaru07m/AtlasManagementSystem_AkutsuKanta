@@ -16,7 +16,7 @@ class CalendarWeekDay{
   }
 
   function render(){
-    return '<p class="day">' . $this->carbon->format("j") . '日</p>';
+    return '<p class="day ' . $this->getClassName() . '">' . $this->carbon->format("j") . '日</p>';
   }
 
   function everyDay(){
@@ -29,38 +29,43 @@ class CalendarWeekDay{
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
 
-    $html[] = '<div class="text-left">';
+    $html[] = '<div class="d-flex flex-column justify-content-center align-items-center">';
     if($one_part){
       $one_part_count = $one_part->users()->count();
 
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+      $html[] = '<div class="w-100 d-flex justify-content-center align-items-center gap-1">';
+      $html[] = '<p class="day_part m-0 pt-1 flex-grow-1 text-info">1部</p>';
       if($one_part_count == 0){
-        $html[] = '<p class="m-0 pt-1">0</p>';
+        $html[] = '<p class="m-0 pt-1 flex-grow-1 text-black text-decoration-none">0</p>';
       }
       else {
-        $html[] = '<a href="' . route('calendar.admin.detail', ['date' => $one_part->setting_reserve, 'part' => 1]) . '" class="m-0 pt-1">' . $one_part_count . '</a>';
+        $html[] = '<a href="' . route('calendar.admin.detail', ['date' => $one_part->setting_reserve, 'part' => 1]) . '" class="m-0 pt-1 flex-grow-1 text-black text-decoration-none">' . $one_part_count . '</a>';
       }
+      $html[] = '</div>';
     }
     if($two_part){
       $two_part_count = $two_part->users()->count();
 
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+      $html[] = '<div class="w-100 d-flex justify-content-center align-items-center gap-1">';
+      $html[] = '<p class="day_part m-0 pt-1 flex-grow-1 text-info">2部</p>';
       if($two_part_count == 0){
-        $html[] = '<p class="m-0 pt-1">0</p>';
+        $html[] = '<p class="m-0 pt-1 flex-grow-1 text-black text-decoration-none">0</p>';
       }
       else{
-        $html[] = '<a href="' . route('calendar.admin.detail', ['date' => $two_part->setting_reserve, 'part' => 2]) . '" class="m-0 pt-1">' . $two_part_count . '</a>';
+        $html[] = '<a href="' . route('calendar.admin.detail', ['date' => $two_part->setting_reserve, 'part' => 2]) . '" class="m-0 pt-1 flex-grow-1 text-black text-decoration-none">' . $two_part_count . '</a>';
       }
+      $html[] = '</div>';
     }
     if($three_part){
       $three_part_count = $three_part->users()->count();
 
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $html[] = '<div class="w-100 d-flex justify-content-center align-items-center gap-1">';
+      $html[] = '<p class="day_part m-0 pt-1 flex-grow-1 text-info">3部</p>';
       if($three_part_count == 0){
-        $html[] = '<p class="m-0 pt-1">0</p>';
+        $html[] = '<p class="m-0 pt-1 flex-grow-1 text-black text-decoration-none">0</p>';
       }
       else{
-        $html[] = '<a href="' . route('calendar.admin.detail', ['date' => $three_part->setting_reserve, 'part' => 3]) . '" class="m-0 pt-1">' . $three_part_count . '</a>';
+        $html[] = '<a href="' . route('calendar.admin.detail', ['date' => $three_part->setting_reserve, 'part' => 3]) . '" class="m-0 pt-1 flex-grow-1 text-black text-decoration-none">' . $three_part_count . '</a>';
       }
     }
     $html[] = '</div>';

@@ -1,14 +1,14 @@
 <x-sidebar>
-<div class="vh-100 pt-5" style="background:#ECF1F6;">
-  <div class="border w-75 m-auto pt-5 pb-5" style="border-radius:5px; background:#FFF;">
-    <div class="w-75 m-auto border" style="border-radius:5px;">
+<div class="vh-100 p-2" style="background:#ECF1F6;">
+  <div class="border w-75 m-auto pt-5 pb-5 px-3" style="border-radius:5px; background:#FFF;">
+    <div class="w-100 m-auto border" style="border-radius:5px;">
 
-      <p class="text-center">{{ $calendar->getTitle() }}</p>
+      <p class="text-center fs-4 mt-2 mb-0">{{ $calendar->getTitle() }}</p>
       <div class="">
         {!! $calendar->render() !!}
       </div>
     </div>
-    <div class="text-right w-75 m-auto">
+    <div class="text-end w-100 mt-3">
       <input type="submit" class="btn btn-primary" value="予約する" form="reserveParts">
     </div>
     <div class="modal js-modal">

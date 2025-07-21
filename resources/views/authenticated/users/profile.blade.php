@@ -14,9 +14,9 @@
       </div>
       <div class="">
         @can('admin')
-        <span class="subject_edit_btn">選択科目の編集</span>
+        <span class="subject_edit_btn text-info">選択科目の編集<i class="ms-1 fa-solid fa-chevron-down toggle-icon"></i></span>
         <div class="subject_inner">
-          <form action="{{ route('user.edit') }}" method="post">
+          <form action="{{ route('user.edit') }}" method="post" class="d-flex justify-content-start align-items-center flex-wrap gap-3">
             @foreach($subject_lists as $subject_list)
             <div>
               <label>{{ $subject_list->subject }}</label>
