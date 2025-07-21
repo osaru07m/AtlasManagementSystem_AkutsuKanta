@@ -223,18 +223,32 @@ li {
 }
 
 .category_btn {
-  font-size: 12px;
+  width: 50%;
+  font-size: .85rem;
   border-radius: 5px;
-  padding: 0 5px;
+  padding: .5rem 0;
   border: none;
   background: #999;
   color: #FFF;
+}
+.category_btn[name="like_posts"] {
+  background-color: #E38EAA;
+}
+.category_btn[name="my_posts"] {
+  background-color: #EBBC5D;
 }
 
 .main_categories span,
 .sub_categories li input {
   list-style: none;
   cursor: pointer;
+}
+
+.main_categories i {
+  transition: all .3s ease-in-out;
+}
+.main_categories i.active {
+  transform: rotate(180deg);
 }
 
 /* ユーザー検索 */
