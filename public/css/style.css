@@ -18,7 +18,7 @@ li {
 
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  width: max-content;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;

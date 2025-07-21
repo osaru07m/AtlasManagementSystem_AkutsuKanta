@@ -15,20 +15,20 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     </head>
     <body class="all_content">
         <div class="d-flex">
-            <div class="sidebar">
-                <p><a href="{{ route('top.show') }}">トップ</a></p>
-                <p><a href="/logout">ログアウト</a></p>
-                <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+            <div class="sidebar py-2" style="word-break: keep-all;">
+                <p class="mb-0"><a href="{{ route('top.show') }}" class="d-flex justify-content-start align-items-center p-2 text-decoration-none" style="gap: .25rem;"><i class="fa-solid fa-house"></i>トップ</a></p>
+                <p class="mb-0"><a href="/logout" class="d-flex justify-content-start align-items-center p-2 text-decoration-none" style="gap: .25rem;"><i class="fa-solid fa-arrow-right-from-bracket"></i>ログアウト</a></p>
+                <p class="mb-0"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}" class="d-flex justify-content-start align-items-center p-2 text-decoration-none" style="gap: .25rem;"><i class="fa-solid fa-calendar"></i>スクール予約</a></p>
                 @if (Auth::user()->role !== 4)
-                <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-                <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                <p class="mb-0"><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}" class="d-flex justify-content-start align-items-center p-2 text-decoration-none" style="gap: .25rem;"><i class="fa-solid fa-calendar-check"></i>スクール予約確認</a></p>
+                <p class="mb-0"><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}" class="d-flex justify-content-start align-items-center p-2 text-decoration-none" style="gap: .25rem;"><i class="fa-solid fa-calendar-plus"></i>スクール枠登録</a></p>
                 @endif
-                <p><a href="{{ route('post.show') }}">掲示板</a></p>
-                <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+                <p class="mb-0"><a href="{{ route('post.show') }}" class="d-flex justify-content-start align-items-center p-2 text-decoration-none" style="gap: .25rem;"><i class="fa-solid fa-message"></i>掲示板</a></p>
+                <p class="mb-0"><a href="{{ route('user.show') }}" class="d-flex justify-content-start align-items-center p-2 text-decoration-none" style="gap: .25rem;"><i class="fa-solid fa-user-group"></i>ユーザー検索</a></p>
             </div>
             <div class="main-container">
                 {{ $slot }}
