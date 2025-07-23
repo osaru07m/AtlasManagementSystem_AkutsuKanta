@@ -60,7 +60,7 @@ class CalendarView{
           if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '</p>';
           }else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 delete-modal-open" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
+            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 delete-modal-open" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" data-id="'. $day->authReserveDate($day->everyDay())->first()->id .'">'. $reservePart .'</button>';
           }
         }else{
           //受付終了判定

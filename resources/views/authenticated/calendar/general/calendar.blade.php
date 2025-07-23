@@ -31,7 +31,7 @@
             </div>
             <div class="w-50 m-auto edit-modal-btn d-flex">
               <a class="js-modal-close btn btn-secondary d-inline-block" href="">閉じる</a>
-              <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
+              <input type="hidden" class="delete-modal-reserve-id" name="id" value="">
               <input type="submit" class="btn btn-danger d-block" value="キャンセルする">
             </div>
           </div>
