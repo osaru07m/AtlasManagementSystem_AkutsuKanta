@@ -19,11 +19,15 @@
             <div class="modal-inner-title w-50 m-auto">
               下記の予約をキャンセルします。よろしいですか？
             </div>
-            <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
-              <label>予約日時</label>
-              <input name="delete_date" class="delete-modal-reserve-date" readonly></input>
-              <label>予約部</label>
-              <input class="delete-modal-reserve-part" readonly></input>
+            <div class="modal-inner-body w-50 m-auto pt-3 pb-3 d-flex flex-column gap-2">
+              <div class="d-flex justify-content-center align-items-center gap-2">
+                <label class="text-nowrap">予約日時</label>
+                <input name="delete_date" class="delete-modal-reserve-date form-control-plaintext w-75" readonly></input>
+              </div>
+              <div class="d-flex justify-content-center align-items-center gap-2">
+                <label class="text-nowrap">予約部</label>
+                <input class="delete-modal-reserve-part form-control-plaintext w-75" readonly></input>
+              </div>
             </div>
             <div class="w-50 m-auto edit-modal-btn d-flex">
               <a class="js-modal-close btn btn-secondary d-inline-block" href="">閉じる</a>
