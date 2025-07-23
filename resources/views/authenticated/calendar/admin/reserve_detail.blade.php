@@ -3,7 +3,7 @@
   <div class="w-50 m-auto h-75">
     <p><span>{{ $date }}</span><span class="ml-3">{{ $part }}部</span></p>
     <div class="border p-2 rounded" style="max-height: 75vh; overflow-y: scroll; background-color: #fff;">
-      <table class="table mb-0 table-striped">
+      <table class="reserve_detail_table table mb-0">
         <tr class="text-center">
           <th class="w-25">ID</th>
           <th class="w-25">名前</th>

@@ -20,7 +20,7 @@
             @if(Auth::user()->is_Like($post->id))
             <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->postLikes->count() }}</span></p>
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->postLikes->count() }}</span></p>
+            <p class="m-0"><i class="fa-regular fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->postLikes->count() }}</span></p>
             @endif
           </div>
         </div>
@@ -30,10 +30,10 @@
   </div>
   <div class="other_area w-25">
     <div class="mx-2 my-4">
-      <div class="mb-3"><a href="{{ route('post.input') }}" class="btn btn-info d-block">投稿</a></div>
+      <div class="mb-3"><a href="{{ route('post.input') }}" class="btn btn-info d-block text-white">投稿</a></div>
       <div class="d-flex justify-content-stretch mb-3">
         <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest" class="flex-grow-1 border rounded-start" style="background-color: transparent;">
-        <input type="submit" value="検索" form="postSearchRequest" class="border rounded-end text-bg-info px-3 py-2">
+        <input type="submit" value="検索" form="postSearchRequest" class="border rounded-end bg-info px-3 py-2 text-white">
       </div>
       <div class="d-flex justify-content-center align-items-center gap-1 mb-3">
         <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">

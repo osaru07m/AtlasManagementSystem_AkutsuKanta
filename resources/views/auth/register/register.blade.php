@@ -1,6 +1,6 @@
 <x-guest-layout>
   <form action="{{ route('registerPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
+    <div class="w-100 min-vh-100 d-flex" style="align-items:center; justify-content:center;">
       <div class="w-50 vh-75 border p-4 shadow" style="border-radius: 1rem; background-color: #fff; max-width: 450px;">
         <div class="register_form">
           <div class="d-flex mt-3 gap-1" style="justify-content:space-between; gap:2rem;">

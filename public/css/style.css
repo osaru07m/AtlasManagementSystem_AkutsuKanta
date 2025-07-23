@@ -19,7 +19,7 @@ li {
 /* サイドバー */
 .sidebar {
   width: max-content;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
 }
@@ -302,4 +302,21 @@ li {
 
 .subject_inner {
   display: none;
+}
+.reserve_detail_table tr:nth-child(1) th,
+.reserve_detail_table tr:nth-child(1) td {
+  background-color: #04A9D2 !important;
+  color: #fff !important;
+}
+
+
+.reserve_detail_table tr:nth-child(odd):not(:nth-child(1)) th,
+.reserve_detail_table tr:nth-child(odd):not(:nth-child(1)) td {
+  background-color: #E5F5F9 !important;
+  color: #000 !important;
+}
+.reserve_detail_table tr:nth-child(even) th,
+.reserve_detail_table tr:nth-child(even) td {
+  background-color: #fff !important;
+  color: #000 !important;
 }

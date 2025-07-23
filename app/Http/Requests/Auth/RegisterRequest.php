@@ -20,9 +20,9 @@ class RegisterRequest extends FormRequest
             'under_name_kana' => ['required', 'string', 'regex:/^[ァ-ヶー]+$/u', 'max:30'],
             'mail_address' => ['required', 'email', 'max:100', 'unique:users,mail_address'],
             'sex' => ['required', 'in:1,2,3'],
-            'old_year' => ['required', 'integer', 'min:2000', 'max:' . now()->year],
-            'old_month' => ['required', 'integer', 'between:1,12'],
-            'old_day' => ['required', 'integer', 'between:1,31'],
+            'old_year' => ['required', 'min:2000', 'max:' . now()->year],
+            'old_month' => ['required', 'between:1,12'],
+            'old_day' => ['required', 'between:1,31'],
             'role' => ['required', 'in:1,2,3,4'],
             'password' => ['required', 'string', 'min:8', 'max:30', 'confirmed'],
             'subject' => ['nullable', 'array'],
@@ -38,6 +38,15 @@ class RegisterRequest extends FormRequest
 
     private function validateBirthDate($validator)
     {
+        if(
+            $this->input('old_year') === 'none' ||
+           $this->input('old_month') === 'none' ||
+           $this->input('old_day') === 'none'
+        ) {
+            $validator->errors()->add('old_day', '生年月日を正しく選択してください。');
+            return;
+        }
+
         $year  = (int) $this->input('old_year');
         $month = (int) $this->input('old_month');
         $day   = (int) $this->input('old_day');
