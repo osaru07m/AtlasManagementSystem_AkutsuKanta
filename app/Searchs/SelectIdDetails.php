@@ -1,6 +1,7 @@
 <?php
 namespace App\Searchs;
 
+use App\Models\Users\Subjects;
 use App\Models\Users\User;
 
 class SelectIdDetails implements DisplayUsers{
@@ -22,6 +23,11 @@ class SelectIdDetails implements DisplayUsers{
     }else{
       $role = array($role);
     }
+    if (is_null($subjects)) {
+      $subjects = Subjects::all()->pluck('id')->toArray();
+    } else {
+      $subjects = is_array($subjects) ? $subjects : [$subjects];
+    }
     $users = User::with('subjects')
     ->whereIn('id', $keyword)
     ->where(function($q) use ($role, $gender){
@@ -29,7 +35,7 @@ class SelectIdDetails implements DisplayUsers{
       ->whereIn('role', $role);
     })
     ->whereHas('subjects', function($q) use ($subjects){
-      $q->where('subjects.id', $subjects);
+      $q->whereIn('subjects.id', $subjects);
     })
     ->orderBy('id', $updown)->get();
     return $users;
